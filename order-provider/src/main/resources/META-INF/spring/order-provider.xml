@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context-3.1.xsd
+       http://code.alibabatech.com/schema/dubbo
+      http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!--当前项目在整个分布式架构里的唯一名称-->
+    <dubbo:application name="order-provider" owner="wk"/>
+
+    <!--dubbo服务要暴露的服务地址的服务中心-->
+    <dubbo:registry address="zookeeper://192.168.0.106:2181?back=192.168.0.103:2181,192.168.0.104:2181,192.168.0.105:2181"/>
+
+    <!--当前服务所依赖的协议，包括http，webservice,thrift-->
+    <dubbo:protocol name="dubbo" port="20880"/>
+
+    <!--暴露的服务接口-->
+    <dubbo:service interface="com.wk.dubbo.order.service.IOrderService" ref="orderService"/>
+
+    <bean id="orderService" class="com.wk.dubbo.order.OrderServiceImpl"/>
+</beans>

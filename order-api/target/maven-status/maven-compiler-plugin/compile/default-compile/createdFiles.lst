@@ -1,0 +1,4 @@
+com\wk\dubbo\order\entity\OrderResponse.class
+com\wk\dubbo\order\service\IOrderService.class
+com\wk\dubbo\order\App.class
+com\wk\dubbo\order\entity\OrderRequest.class
